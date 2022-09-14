@@ -5,11 +5,25 @@ export class Contract{
     this.wallet = wallet;
   }
 
-  async getGreeting(){
-    return await this.wallet.viewMethod({method: 'get_greeting'});
+  async createAirdrop(airdropName, metadata, totalSupply, airdropAdmin, airdropAccountData) {
+    return await this.wallet.callMethod(
+      {
+        method: 'create_airdrop', 
+        args:{
+          airdrop_name: airdropName,
+          metada: metadata,
+          total_supply: totalSupply,
+          airdrop_admin: airdropAdmin,
+          airdrop_account_data: airdropAccountData
+        }
+      });
   }
-  
-  async setGreeting(greeting){
-    return await this.wallet.callMethod({method: 'set_greeting', args:{message: greeting}});
+
+  async createMerkleTree(leaves) {
+    return await this.wallet.callMethod({method: 'create_merkle_tree', args:{leaves: leaves}})
+  }
+
+  async claim(expectedProof, claimAddress) {
+    return await this.wallet.callMethod({method: 'claim', args:{expected_proof: expectedProof, leaf: claimAddress}})
   }
 }

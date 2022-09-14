@@ -4,13 +4,17 @@
   "license": "(MIT AND Apache-2.0)",
   "scripts": {
     "start": "cd frontend && npm run start",
+    "deployClaimer": "cd claimer && ./deployClaimer.sh",
+    "deployFt": "cd ft && ./deployFt.sh",
     "deploy": "cd contract && ./deploy.sh",
     "build": "npm run build:contract && npm run build:web",
     "build:web": "cd frontend && npm run build",
+    "build:claimer": "cd claimer && ./build.sh",
+    "build:ft": "cd ft && ./build.sh",
     "build:contract": "cd contract && ./build.sh",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "cd contract && cargo test",
-    "test:integration": "npm run build:contract && cd integration-tests && cargo run --example integration-tests \"../contract/target/wasm32-unknown-unknown/release/nearconn2022.wasm\"",
+    "test:integration": "npm run build:contract && cd integration-tests && cargo run --example integration-tests \"../contract/target/wasm32-unknown-unknown/release/nearcon2022.wasm\"",
     "postinstall": "cd frontend && npm install && cd .."
   },
   "devDependencies": {

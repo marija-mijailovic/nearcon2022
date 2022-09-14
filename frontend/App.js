@@ -1,8 +1,7 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
-
+import RegisterForAirdrop from './component/RegisterAirdrop';
 import './assets/global.css';
-
 import { EducationalText, SignInPrompt, SignOutButton } from './ui-components';
 
 
@@ -43,6 +42,7 @@ export default function App({ isSignedIn, contract, wallet }) {
     <>
       <SignOutButton accountId={wallet.accountId} onClick={() => wallet.signOut()}/>
       <main className={uiPleaseWait ? 'please-wait' : ''}>
+        <RegisterForAirdrop></RegisterForAirdrop>
         <h1>
           The contract says: <span className="greeting">{valueFromBlockchain}</span>
         </h1>
